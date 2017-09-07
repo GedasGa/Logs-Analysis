@@ -14,13 +14,14 @@ group by articles.title
 order by views desc, articles.title limit 3;
 """
 
-def get_top_articles(query):
+def get_top_articles(question, query):
   """Find the most popular three articles of all time"""
   db = psycopg2.connect(database=DBNAME)
   c = db.cursor()
   c.execute(query)
   result = c.fetchall()
   db.close()
+  print(question)
   for i in results:
       print "%s -- %s views" % (i[0], i[1])
 
