@@ -19,7 +19,7 @@ def get_top_articles(question, query):
   db = psycopg2.connect(database=DBNAME)
   c = db.cursor()
   c.execute(query)
-  result = c.fetchall()
+  results = c.fetchall()
   db.close()
   print(question)
   for i in results:
@@ -30,3 +30,6 @@ def get_popular_authors():
 
 def get_error_percentage():
   """Find on which days did more than 1% of requests lead to errors"""
+
+if __name__ == '__main__':
+    get_top_articles(question_1, query_1)
