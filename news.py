@@ -4,8 +4,16 @@ import psycopg2
 
 DBNAME = "news"
 
-def get_top_articles():
+def get_top_articles(query):
   """Find the most popular three articles of all time"""
+  db = psycopg2.connect(database=DBNAME)
+  c = db.cursor()
+  c.execute(query)
+  result = c.fetchall()
+  db.close()
+
+  for i in results:
+      print "%s -- %s views" % (i[0], i[1])  
 
 def get_popular_authors():
   """Find the most popular article authors of all time"""
