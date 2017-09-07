@@ -25,6 +25,15 @@ GROUP BY authors.name
 ORDER BY views DESC, authors.name;
 """
 
+question_3 = "On which days did more than 1% of requests lead to errors?"
+query_3 = """
+SELECT total_errors.day, ROUND(total_errors.errors*100.0/total_visits.total, 2) 00AS percentage
+FROM total_errors, total_visits
+WHERE total_visits.day = total_errors.day
+AND (total_errors.errors*100.0/total_visits.total) > 1.0
+ORDER BY total_errors.day;
+"""
+
 def get_top_articles(question, query):
   """Find the most popular three articles of all time"""
   db = psycopg2.connect(database=DBNAME)
@@ -50,6 +59,8 @@ def get_popular_authors(question, query):
 def get_error_percentage():
   """Find on which days did more than 1% of requests lead to errors"""
 
+
 if __name__ == '__main__':
     get_top_articles(question_1, query_1)
+    print '\n\n'
     get_popular_authors(question_2, query_2)
