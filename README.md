@@ -75,3 +75,8 @@ SELECT DATE(time) AS day, COUNT(status) AS total
 FROM log
 GROUP BY day;
 ```
+
+## Running the program:
+
+After you've completed all the steps above you can run the program. You can do this by executing this line of code in your Virtual Machine:
+ `python news.py`
