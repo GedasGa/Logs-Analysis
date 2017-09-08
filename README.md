@@ -19,14 +19,15 @@ This is a Python program which connects to an existing database on a Virtual mac
 ### Setup Project:
 
 - Install Vagrant and VirtualBox
-Take a look here --- to find more information. (https://drupalize.me/videos/installing-vagrant-and-virtualbox?p=1526)
+Take a look [here](https://drupalize.me/videos/installing-vagrant-and-virtualbox?p=1526) to find more information.
 - Download the project .zip file to you computer and unzip the file or clone this repository to your desktop.
-- Then download or clone https://github.com/udacity/fullstack-nanodegree-vm repository.
+- You can download or clone [this](https://github.com/udacity/fullstack-nanodegree-vm) repository with vagrant files.
+- Then download [database file](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
 - Now unzip it and make sure you place `newsdata.sql` file into vagrant folder.
 
 #### This project consists for the following files:
-- `news.py` - main python file containing all queries and other stuff doing all the work.
-- `newsdata.sql` - database file with all records.
+- `news.py` - main python file containing all queries and other stuff doing all the work
+- `newsdata.sql` - database file with all records
 
 ### Launching the Virtual Machine:
 
@@ -44,8 +45,8 @@ Here's what this command does:
 - `psql` — the PostgreSQL command line program
 - `-d news` — connect to the database named news which has been set up for you
 - `-f newsdata.sql` — run the SQL statements in the file newsdata.sql
-Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data.
 
+Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data.
 
 ### The database includes three tables:
 
@@ -53,13 +54,12 @@ Running this command will connect to your installed database server and execute 
 - The `articles` table includes the articles themselves.
 - The `log table` includes one entry for each time a user has accessed the site.
 
-
 Use `psql -d news` to connect to database.
 
 ### Creating Views:
 
 To create views you first have to connect to the database base using the command from above.
-Now you can just paste the code bellow to create a new view.
+Then just paste the code bellow to create a new view.
 
 ```
 CREATE VIEW total_errors AS
