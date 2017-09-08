@@ -27,51 +27,55 @@ ORDER BY views DESC, authors.name;
 
 question_3 = "On which days did more than 1% of requests lead to errors?"
 query_3 = """
-SELECT total_errors.day, ROUND(total_errors.errors*100.0/total_visits.total, 2) AS percentage
+SELECT total_errors.day,
+ROUND(total_errors.errors*100.0/total_visits.total, 2) AS percentage
 FROM total_errors, total_visits
 WHERE total_visits.day = total_errors.day
 AND (total_errors.errors*100.0/total_visits.total) > 1.0
 ORDER BY total_errors.day;
 """
 
+
 def get_top_articles(question, query):
-  """Find the most popular three articles of all time"""
-  db = psycopg2.connect(database=DBNAME)
-  c = db.cursor()
-  c.execute(query)  # executing query
-  results = c.fetchall()
-  db.close()
-  # printing question and results
-  print(question)
-  for i in results:
-      print '  \"%s\" - %s views' % (i[0], i[1])
-  print '\n'
+    """Find the most popular three articles of all time"""
+    db = psycopg2.connect(database=DBNAME)
+    c = db.cursor()
+    c.execute(query)  # executing query
+    results = c.fetchall()
+    db.close()
+    # printing question and results
+    print(question)
+    for i in results:
+        print '  \"%s\" - %s views' % (i[0], i[1])
+    print '\n'
+
 
 def get_popular_authors(question, query):
-  """Find the most popular article authors of all time"""
-  db = psycopg2.connect(database=DBNAME)
-  c = db.cursor()
-  c.execute(query)  # executing query
-  results = c.fetchall()
-  db.close()
-  # printing question and results
-  print(question)
-  for i in results:
-      print '  %s - %s views' % (i[0], i[1])
-  print '\n'
+    """Find the most popular article authors of all time"""
+    db = psycopg2.connect(database=DBNAME)
+    c = db.cursor()
+    c.execute(query)  # executing query
+    results = c.fetchall()
+    db.close()
+    # printing question and results
+    print(question)
+    for i in results:
+        print '  %s - %s views' % (i[0], i[1])
+    print '\n'
+
 
 def get_error_percentage(question, query):
-  """Find on which days did more than 1% of requests lead to errors"""
-  db = psycopg2.connect(database=DBNAME)
-  c = db.cursor()
-  c.execute(query) # executing query
-  results = c.fetchall()
-  db.close()
-  # printing question and results
-  print(question)
-  for i in results:
-      print '  %s - %s%% errors' % (i[0], i[1])
-  print '\n'
+    """Find on which days did more than 1% of requests lead to errors"""
+    db = psycopg2.connect(database=DBNAME)
+    c = db.cursor()
+    c.execute(query)  # executing query
+    results = c.fetchall()
+    db.close()
+    # printing question and results
+    print(question)
+    for i in results:
+        print '  %s - %s%% errors' % (i[0], i[1])
+    print '\n'
 
 if __name__ == '__main__':
     get_top_articles(question_1, query_1)
