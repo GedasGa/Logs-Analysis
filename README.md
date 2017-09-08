@@ -61,13 +61,17 @@ Use `psql -d news` to connect to database.
 To create views you first have to connect to the database base using the command from above.
 Now you can just paste the code bellow to create a new view.
 
+```
 CREATE VIEW total_errors AS
 SELECT DATE(time) as day, COUNT(status) AS errors
 FROM log
 WHERE status like '4%'
 GROUP BY day;
+```
 
+```
 CREATE VIEW total_visits AS
 SELECT DATE(time) AS day, COUNT(status) AS total
 FROM log
 GROUP BY day;
+```
