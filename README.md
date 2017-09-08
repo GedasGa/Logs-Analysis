@@ -27,7 +27,6 @@ Take a look [here](https://drupalize.me/videos/installing-vagrant-and-virtualbox
 
 #### This project consists for the following files:
 - `news.py` - main python file containing all queries and other stuff doing all the work
-- `newsdata.sql` - database file with all records
 
 ### Launching the Virtual Machine:
 
